@@ -6,6 +6,14 @@ default:
     paths:
       - public
 
+external linkcheck:
+  image:
+    name: lycheeverse/lychee
+    entrypoint: [""]
+  script: lychee -v $CI_PAGES_URL
+  only:
+    - schedules
+
 lint:
   before_script:
     - pacman -Syu --noconfirm yamllint
